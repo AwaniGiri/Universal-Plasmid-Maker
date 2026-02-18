@@ -13,7 +13,8 @@ def test_ecori_removal():
         seq = f.read()
 
     assert "GAATTC" not in seq
-    print("✅ TEST PASSED: EcoRI site successfully removed.")
+    print(" TEST PASSED: EcoRI site successfully removed.")
 
 if __name__ == "__main__":
     test_ecori_removal()
+
