@@ -14,16 +14,16 @@ class PlasmidArchitect:
        
         with open(path, 'r') as f:
             lines = f.readlines()
-            # Join all lines except the header (line starting with >)
+           
             return "".join([line.strip() for line in lines if not line.startswith(">")]).upper()
 
     def parse_design(self, path):
-        """Parses the Design.txt file into a list of tuples."""
+       
         design = []
         with open(path, 'r') as f:
             for line in f:
                 if ',' in line:
-                    # Splits 'Multiple_Cloning_Site1, RestrictionEnzyme1'
+                    
                     parts = line.strip().split(',')
                     design.append((parts[0].strip(), parts[1].strip()))
         return design
@@ -51,8 +51,6 @@ class PlasmidArchitect:
         
         # B. Add necessary replication genes by default (RepA/B/C)
         # As per the FEMS paper, these are required for BHR plasmids
-        
-        
         # C. Add user-requested markers and enzymes
         for feature, name in self.design_specs:
             if name in self.marker_db:
@@ -69,7 +67,7 @@ class PlasmidArchitect:
         return new_plasmid
 
     def save_output(self, filename="Output.Fa"):
-        """Saves the final sequence in FASTA format."""
+        
         final_seq = self.engineer()
         with open(filename, "w") as f:
             f.write(">Engineered_Plasmid_Output\n")
@@ -100,3 +98,4 @@ def run_test():
 
 
 run_test()
+
